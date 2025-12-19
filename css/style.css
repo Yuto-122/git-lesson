@@ -1,5 +1,152 @@
 @charset "UTF-8";
-body{
+
+/* カスタムプロパティ */
+:root {
+    /* --カスタムプロパティ名:値 */
+    --portfolio-black: #000000;
+    --portfolio-white: #ffffff;
+    --portfolio-green: #296A65;
+    --portfolio-light-green: #2fac9e;
+    --portfolio-gray: #eeeeee;
+
+    --fz-12: 12px;
+    --fz-14: 14px;
+    --fz-16: 16px;
+    --fz-18: 18px;
+    --fz-24: 24px;
+    --fz-32: 32px;
+    --fz-64: 64px;
+}
+
+body {
     background-color: green;
+    /* カスタムプロパティの呼び方
+     * プロパティ名:var(--カスタムプロパティ名)*/
+    background-color: var(--portfolio-gray);
+
+}
+
+ul li {
+    list-style-type: none;
+}
+
+/* 何番目形疑似クラス */
+
+/* 1,child系 */
+/*:first-child⇒最初の子要素
+:last-child⇒最後の子要素
+:nth-child(番号)⇒子要素を番号で指定*/
+
+/* nth-child指定方法 
+偶数だけ変える⇒even｜2n
+奇数だけ変える⇒odd｜2n+1*/
+
+
+/* li:nth-child(odd) {
+   color: red;
+} */
+
+/* 2,of-type系 */
+/* first-of-type
+last-of-type
+nth-of-type() */
+
+/* of-typeを使って練習2だけ緑に変える */
+
+.sec01>p:first-of-type {
+    color: green;
+}
+
+/* childを使ってフォントに下線をつける */
+.sec01>p:nth-child(2) {
+    text-decoration: underline solid #ff0000 4px;
+}
+
+
+/* .sec01 ul li:nth-child(2){
     font-weight: bold;
+    color: red;
+} */
+/* .sec01 ul li:nth-of-type(even){
+font-weight: bold;
+color: blue;
+} */
+
+/* li-5だけ24px */
+.sec01 ul:nth-of-type(2) li:nth-child(2) {
+    font-weight: bold;
+    font-size: 24px;
+    /* どっちのulか指定してからliを指定する */
+}
+
+/* フォームのスタイルをリセットする */
+input[type="text"],
+input[type=submit],
+textarea {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+    appearance: none;
+}
+
+/* お名前とメールアドレス、メッセージの入力欄に太さ1px,実線黒のボーダーを引く */
+/* input[type="text"],
+input[type="email"],
+textarea {
+    border: var(--portfolio-black) solid 1px;
+    background-color: var(--portfolio-white);
+} */
+input:is([type="text"], [type="email"]),
+textarea {
+    border: var(--portfolio-black) solid 1px;
+    background-color: var(--portfolio-white);
+}
+
+/* フォーカスされている入力欄を強調する */
+input:focus,
+textarea:focus {
+    outline: 3px solid var(--portfolio-green);
+}
+
+/* 必須項目のスタイルを変更する */
+input:required {
+    background-color: pink;
+}
+
+/* 疑似要素:has() */
+/* has以降の子要素に含まれるものがある場合の書き方。
+今回の場合、・input要素にrequired属性が含まれる場合のspanタグの::after要素。という意味 */
+label:has(input[required]) span::after {
+    content: "必須";
+    font-size: 0.8em;
+    display: inline-block;
+    background-color: var(--portfolio-green);
+    color: var(--portfolio-white);
+    border-radius: 3px;
+    padding-inline: 6px;
+    padding-block: 3px;
+    margin-inline-start: 5px;
+}
+
+/* inlne=lft,right、block=top,bottom*/
+
+/* inline-start=left */
+/* inline-end=right */
+/* block-start=top */
+/* block-end=bottom */
+
+input[type="submit"] {
+    border-radius: 8px;
+    background-color: var(--portfolio-green);
+    color: var(--portfolio-white);
+    padding-inline: 13px;
+    padding-block: 8px;
+}
+
+input[type="submit"]:disabled{
+    background-color: var(--portfolio-gray);
+    color: var(--portfolio-black);
+    border: 1px solid var(--portfolio-black);
+    opacity: 0.5;
 }
