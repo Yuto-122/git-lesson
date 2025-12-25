@@ -19,10 +19,9 @@
 }
 
 body {
-    background-color: green;
     /* カスタムプロパティの呼び方
      * プロパティ名:var(--カスタムプロパティ名)*/
-    background-color: var(--portfolio-gray);
+    background-color:pink;
 
 }
 
@@ -142,6 +141,7 @@ input[type="submit"] {
     color: var(--portfolio-white);
     padding-inline: 13px;
     padding-block: 8px;
+    text-align: center;
 }
 
 input[type="submit"]:disabled{
